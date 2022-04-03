@@ -1,7 +1,7 @@
-let nome = document.getElementById("nome");
-let sobrenome = document.getElementById("sobrenome");
-let email = document.getElementById("email");
-let senha = document.getElementById("senha");
+let nomeInput = document.getElementById("nome");
+let sobrenomeInput = document.getElementById("sobrenome");
+let emailInput = document.getElementById("email");
+let senhaInput = document.getElementById("senha");
 let repeteSenha = document.getElementById("repeteSenha");
 
 let nomeValidacao = document.getElementById("nomeValidacao");
@@ -18,11 +18,11 @@ let senhaEValida = false;
 let repeteSenhaEValida = false;
 
 
-nome.addEventListener("blur", () => {
-    if (nome.value != "") {
+nomeInput.addEventListener("blur", () => {
+    if (nomeInput.value != "") {
 
         nomeValidacao.innerText = ""
-        nome.style.border = ``
+        nomeInput.style.border = ``
         nomeEValido = true;
     } else {
 
@@ -30,17 +30,17 @@ nome.addEventListener("blur", () => {
         nomeValidacao.style.color = "#E01E1E"
         nomeValidacao.style.fontSize = "8"
         nomeValidacao.style.fontWeight = "bold"
-        nome.style.border = `1px solid #E01E1E`
+        nomeInput.style.border = `1px solid #E01E1E`
         nomeEValido = false;
     }
     validaTelaDeSignup();
 })
 
-sobrenome.addEventListener("blur", () => {
-    if (sobrenome.value != "") {
+sobrenomeInput.addEventListener("blur", () => {
+    if (sobrenomeInput.value != "") {
 
         sobrenomeValidacao.innerText = ""
-        sobrenome.style.border = ``
+        sobrenomeInput.style.border = ``
         sobrenomeEValido = true;
     } else {
 
@@ -48,17 +48,17 @@ sobrenome.addEventListener("blur", () => {
         sobrenomeValidacao.style.color = "#E01E1E"
         sobrenomeValidacao.style.fontSize = "8"
         sobrenomeValidacao.style.fontWeight = "bold"
-        sobrenome.style.border = `1px solid #E01E1E`
+        sobrenomeInput.style.border = `1px solid #E01E1E`
         sobrenomeEValido = false;
     }
     validaTelaDeSignup();
 })
 
-email.addEventListener("blur", () => {
-    if (email.value != "") {
+emailInput.addEventListener("blur", () => {
+    if (emailInput.value != "") {
 
         emailValidacao.innerText = ""
-        email.style.border = ``
+        emailInput.style.border = ``
         emailEValido = true;
     } else {
 
@@ -66,17 +66,17 @@ email.addEventListener("blur", () => {
         emailValidacao.style.color = "#E01E1E"
         emailValidacao.style.fontSize = "8"
         emailValidacao.style.fontWeight = "bold"
-        email.style.border = `1px solid #E01E1E`
+        emailInput.style.border = `1px solid #E01E1E`
         emailEValido = false;
     }
     validaTelaDeSignup();
 })
 
-senha.addEventListener("blur", () => {
-    if (/[0-9a-zA-Z$*&@#]{8,}/.test(senha.value)) {
+senhaInput.addEventListener("blur", () => {
+    if (/[0-9a-zA-Z$*&@#]{8,}/.test(senhaInput.value)) {
 
         senhaValidacao.innerText = ""
-        senha.style.border = ``
+        senhaInput.style.border = ``
         senhaEValida = true;
     } else {
 
@@ -84,7 +84,7 @@ senha.addEventListener("blur", () => {
         senhaValidacao.style.color = "#E01E1E"
         senhaValidacao.style.fontSize = "8"
         senhaValidacao.style.fontWeight = "bold"
-        senha.style.border = `1px solid #E01E1E`
+        senhaInput.style.border = `1px solid #E01E1E`
         senhaEValida = false;
 
         validaTelaDeSignup();
@@ -94,7 +94,7 @@ senha.addEventListener("blur", () => {
 
 repeteSenha.addEventListener("blur", () => {
 
-    if (repeteSenha.value == senha.value) {
+    if (repeteSenha.value == senhaInput.value) {
 
         repeteSenhaValidacao.innerText = ""
         repeteSenha.style.border = ``
