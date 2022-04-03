@@ -6,7 +6,10 @@ let botaoSalvar = document.getElementById('botaoSalvar');
 let campoEmailLoginNormalizado;
 let campoSenhaLoginNormalizado;
 
+
 let emailEValido = false;
+let senhaEValida = false;
+
 
 //Desabilita o botão ao iniciar a página
 botaoSalvar.setAttribute('disabled', true);
@@ -35,7 +38,7 @@ botaoSalvar.addEventListener('click', function (evento) {
 
         console.log(usuarioObjeto);
 
-    //Se a validação NÃO passar, se for false o retorno da função....
+        //Se a validação NÃO passar, se for false o retorno da função....
     } else {
         evento.preventDefault();
         alert("Ambas as informações devem ser preenchidas");
@@ -65,8 +68,28 @@ campoEmailLogin.addEventListener('blur', function () {
     validaTelaDeLogin();
 });
 
+campoSenhaLogin.addEventListener('blur', function () {
+
+    let senhaValidacao = document.getElementById('senhaValidacao');
+
+    if (campoSenhaLogin.value != "") {
+        senhaValidacao.innerText = ""
+        campoSenhaLogin.style.border = ``
+        senhaEValida = true;
+    } else {
+
+        senhaValidacao.innerText = "Senha inválida"
+        senhaValidacao.style.color = "#E01E1E"
+        senhaValidacao.style.fontSize = "8"
+        senhaValidacao.style.fontWeight = "bold"
+        campoSenhaLogin.style.border = `1px solid #E01E1E`
+        senhaEValida = false;
+    }
+    validaTelaDeLogin();
+});
+
 function validaTelaDeLogin() {
-    if (emailEValido) {
+    if (emailEValido && senhaEValida) {
         botaoSalvar.removeAttribute('disabled')
         botaoSalvar.innerText = "Acessar"
         return true

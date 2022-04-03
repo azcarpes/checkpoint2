@@ -1,4 +1,4 @@
-function retiraEspacosDeUmValorInformado (recebeValor) {
+function retiraEspacosDeUmValorInformado(recebeValor) {
     return recebeValor.trim();
 }
 

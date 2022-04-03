@@ -8,18 +8,14 @@
   <title>To-Do App</title>
 
   <!-- ---------------- estilos compartilhados entre login e signup ---------------- -->
-  <link rel="stylesheet" href="styles/acesso.css">
-
-  <!-- ---------------------- lógica aplicada no registro -------------------- -->
-  <script src="/scripts/utils.js"></script>
-  <script src="/scripts/signup.js"></script>
+  <link rel="stylesheet" href="/ToDo-App/styles/acesso.css">
 
 </head>
 
 <body>
 
   <div class="left">
-    <img src="./assets/pessoa-signup.png" alt="">
+    <img src="/ToDo-App/assets/pessoa-signup.png" alt="">
   </div>
   <div class="right">
     <form>
@@ -29,26 +25,31 @@
 
       <label>
         Nome:
-        <input type="text">
+        <input id="nome" type="text">
+        <small id="nomeValidacao"></small>
       </label>
       <label>
-        Apelido:
-        <input type="text">
+        Sobrenome:
+        <input id="sobrenome" type="text">
+        <small id="sobrenomeValidacao"></small>
       </label>
       <label>
         Email:
-        <input type="text">
+        <input id="email" type="text">
+        <small id="emailValidacao"></small>
       </label>
       <label>
         Senha:
-        <input type="password">
+        <input id="senha" type="password">
+        <small id="senhaValidacao"></small>
       </label>
       <label>
         Repetir senha:
-        <input type="password">
+        <input id="repeteSenha" type="password">
+        <small id="repeteSenhaValidacao"></small>
       </label>
 
-      <button>Criar conta</button>
+      <button id="botaoSignup" type="submit">Criar conta</button>
 
     </form>
     <div class="ingressar">
@@ -56,6 +57,8 @@
     </div>
   </div>
 
+  <script src="/ToDo-App/scripts/validacoes/utils.js"></script>
+  <script src="/ToDo-App/scripts/signup/index.js"></script>
 </body>
 
 </html>
