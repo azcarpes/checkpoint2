@@ -34,7 +34,7 @@ botaoSalvar.addEventListener('click', function (evento) {
 
         //Atribui as variáveis normalizadas ao objeto do login
         usuarioObjeto.email = campoEmailLoginNormalizado;
-        usuarioObjeto.senha = campoSenhaLoginNormalizado;
+        usuarioObjeto.password = campoSenhaLoginNormalizado;
 
         let usuarioObjetoJson = JSON.stringify(usuarioObjeto);
 

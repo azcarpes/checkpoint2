@@ -47,9 +47,9 @@ botaoSignup.addEventListener('click', function (evento) {
 
         let usuarioSignupJson = JSON.stringify(usuarioSignup);
 
-        let urlEndPointLogin = "https://ctd-todo-api.herokuapp.com/v1/users"
+        let urlEndPointSignup = "https://ctd-todo-api.herokuapp.com/v1/users"
 
-        let configuracaoRequisicao = {
+        let objetoRequisicao = {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -57,7 +57,7 @@ botaoSignup.addEventListener('click', function (evento) {
             body: usuarioSignupJson
         }
 
-        fetch(urlEndPointLogin, configuracaoRequisicao).then(
+        fetch(urlEndPointSignup, objetoRequisicao).then(
             resultado => {
                 return resultado.json();
             }
@@ -74,7 +74,7 @@ botaoSignup.addEventListener('click', function (evento) {
 
     } else {
         evento.preventDefault();
-        alert("Ambas as informações devem ser preenchidas");
+        alert("Todos os campos devem ser preenchidos");
     }
 
 });
