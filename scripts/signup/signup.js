@@ -17,6 +17,67 @@ let emailEValido = false;
 let senhaEValida = false;
 let repeteSenhaEValida = false;
 
+let nomeSignupNormalizado;
+let sobrenomeSignupNormalizado;
+let emailSignupNormalizado;
+let senhaSignupNormalizado;
+
+const usuarioSignup = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: ""
+}
+
+
+botaoSignup.addEventListener('click', function (evento) {
+
+    if (validaTelaDeSignup()) {
+
+        nomeSignupNormalizado = retiraEspacosDeUmValorInformado(nomeInput.value);
+        sobrenomeSignupNormalizado = retiraEspacosDeUmValorInformado(sobrenomeInput.value);
+        emailSignupNormalizado = retiraEspacosDeUmValorInformado(emailInput.value);
+        senhaSignupNormalizado = retiraEspacosDeUmValorInformado(senhaInput.value);
+        let emailSignupNormalizado2 = converteValorRecebidoEmMinusculo(emailSignupNormalizado);
+
+        usuarioSignup.firstName = nomeSignupNormalizado;
+        usuarioSignup.lastName = sobrenomeSignupNormalizado;
+        usuarioSignup.email = emailSignupNormalizado2;
+        usuarioSignup.password = senhaSignupNormalizado;
+
+        let usuarioSignupJson = JSON.stringify(usuarioSignup);
+
+        let urlEndPointLogin = "https://ctd-todo-api.herokuapp.com/v1/users"
+
+        let configuracaoRequisicao = {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: usuarioSignupJson
+        }
+
+        fetch(urlEndPointLogin, configuracaoRequisicao).then(
+            resultado => {
+                return resultado.json();
+            }
+        ).then(
+            resultado => {
+                console.log(resultado);
+            }
+        ).catch(
+            erro => {
+                console.log(erro);
+            }
+        )
+
+
+    } else {
+        evento.preventDefault();
+        alert("Ambas as informações devem ser preenchidas");
+    }
+
+});
 
 nomeInput.addEventListener("blur", () => {
     if (nomeInput.value != "") {
@@ -55,7 +116,7 @@ sobrenomeInput.addEventListener("blur", () => {
 })
 
 emailInput.addEventListener("blur", () => {
-    if (emailInput.value != "") {
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(emailInput.value)) {
 
         emailValidacao.innerText = ""
         emailInput.style.border = ``

@@ -18,7 +18,7 @@ botaoSalvar.innerText = "Bloqueado"
 //Cria o objeto que representa o login do usuário
 const usuarioObjeto = {
     email: "",
-    senha: ""
+    password: ""
 }
 
 //Executa ao clicar no botão de Acessar
@@ -36,7 +36,31 @@ botaoSalvar.addEventListener('click', function (evento) {
         usuarioObjeto.email = campoEmailLoginNormalizado;
         usuarioObjeto.senha = campoSenhaLoginNormalizado;
 
-        console.log(usuarioObjeto);
+        let usuarioObjetoJson = JSON.stringify(usuarioObjeto);
+
+        let urlEndPointLogin = "https://ctd-todo-api.herokuapp.com/v1/users/login"
+
+        let configuracaoRequisicao = {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: usuarioObjetoJson
+        }
+
+        fetch(urlEndPointLogin, configuracaoRequisicao).then(
+            resultado => {
+                return resultado.json();
+            }
+        ).then(
+            resultado => {
+                console.log(resultado);
+            }
+        ).catch(
+            erro => {
+                console.log(erro);
+            }
+        )
 
         //Se a validação NÃO passar, se for false o retorno da função....
     } else {
