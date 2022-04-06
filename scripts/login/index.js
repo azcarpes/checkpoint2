@@ -24,6 +24,8 @@ const usuarioObjeto = {
 //Executa ao clicar no botão de Acessar
 botaoSalvar.addEventListener('click', function (evento) {
 
+    evento.preventDefault();
+
     //Se a validação passar, se for true o retorno da função....
     if (validaTelaDeLogin()) {
         //Normalizando - Retirando os espaços em branco
@@ -48,19 +50,37 @@ botaoSalvar.addEventListener('click', function (evento) {
             body: usuarioObjetoJson
         }
 
-        fetch(urlEndPointLogin, configuracaoRequisicao).then(
-            resultado => {
-                return resultado.json();
+        fetch(urlEndPointLogin, configuracaoRequisicao)
+            .then(resultado => {
+                if (resultado.status == 201) {
+                    return resultado.json();
+                }
+                throw resultado;
+            }).then(resultado => {
+                loginSucesso(resultado.jwt);
             }
-        ).then(
-            resultado => {
-                console.log(resultado);
-            }
-        ).catch(
-            erro => {
-                console.log(erro);
-            }
-        )
+            ).catch(
+                erro => {
+                    loginErro(erro.status);
+                }
+            );
+
+        function loginSucesso(jwtRecebido) {
+            console.log(jwtRecebido);
+            alert("Usuário logado com sucesso")
+
+            sessionStorage.setItem("jwt", jwtRecebido);
+
+            window.location.href = "tarefas.html"
+        }
+
+        function loginErro(statusRecebido) {
+            console.log(statusRecebido);
+            let loginValidacao = document.getElementById("loginValidacao");
+            elementoSmallErro(loginValidacao);
+            campoSenhaLogin.value = "";
+        }
+
 
         //Se a validação NÃO passar, se for false o retorno da função....
     } else {
@@ -123,6 +143,12 @@ function validaTelaDeLogin() {
         return false
     }
 }
+
+function elementoSmallErro(small) {
+    small.innerText = "Usuário ou senha incorreta";
+    small.style.color = "Red"
+}
+
 
 
 

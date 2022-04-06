@@ -5,3 +5,4 @@ function retiraEspacosDeUmValorInformado(recebeValor) {
 function converteValorRecebidoEmMinusculo(recebeValor) {
     return recebeValor.toLowerCase();
 }
+

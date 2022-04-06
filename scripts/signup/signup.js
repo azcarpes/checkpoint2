@@ -32,6 +32,8 @@ const usuarioSignup = {
 
 botaoSignup.addEventListener('click', function (evento) {
 
+    evento.preventDefault();
+
     if (validaTelaDeSignup()) {
 
         nomeSignupNormalizado = retiraEspacosDeUmValorInformado(nomeInput.value);
@@ -49,7 +51,7 @@ botaoSignup.addEventListener('click', function (evento) {
 
         let urlEndPointSignup = "https://ctd-todo-api.herokuapp.com/v1/users"
 
-        let objetoRequisicao = {
+        let configuracaoRequisicao = {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -57,24 +59,32 @@ botaoSignup.addEventListener('click', function (evento) {
             body: usuarioSignupJson
         }
 
-        fetch(urlEndPointSignup, objetoRequisicao).then(
-            resultado => {
-                return resultado.json();
+        fetch(urlEndPointSignup, configuracaoRequisicao)
+            .then(resultado => {
+                if (resultado.status == 201) {
+                    return resultado.json();
+                }
+                throw resultado;
+            }).then(resultado => {
+                signupSucesso(resultado.jwt);
             }
-        ).then(
-            resultado => {
-                console.log(resultado);
-            }
-        ).catch(
-            erro => {
-                console.log(erro);
-            }
-        )
+            ).catch(
+                erro => {
+                    console.log(erro);
+                }
+            );
+
+        function signupSucesso(jwtRecebido) {
+            console.log(jwtRecebido);
+            alert("Usuário criado com sucesso")
+        }
 
 
     } else {
         evento.preventDefault();
-        alert("Todos os campos devem ser preenchidos");
+        alert("Campos inválidos");
+        senhaInput.value = "";
+        repeteSenha.value = "";
     }
 
 });
