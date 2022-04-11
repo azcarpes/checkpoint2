@@ -91,7 +91,7 @@ botaoSalvar.addEventListener('click', function (evento) {
 });
 
 //Ao clicar e interagir com o campo de "email" no formulário
-campoEmailLogin.addEventListener('blur', function () {
+campoEmailLogin.addEventListener('input', function () {
     //Capturando o elemento <Small> do html
     let emailValidacao = document.getElementById('emailValidacao');
 
@@ -112,7 +112,7 @@ campoEmailLogin.addEventListener('blur', function () {
     validaTelaDeLogin();
 });
 
-campoSenhaLogin.addEventListener('blur', function () {
+campoSenhaLogin.addEventListener('input', function () {
 
     let senhaValidacao = document.getElementById('senhaValidacao');
 

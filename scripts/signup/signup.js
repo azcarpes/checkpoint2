@@ -89,7 +89,7 @@ botaoSignup.addEventListener('click', function (evento) {
 
 });
 
-nomeInput.addEventListener("blur", () => {
+nomeInput.addEventListener("input", () => {
     if (nomeInput.value != "") {
 
         nomeValidacao.innerText = ""
@@ -107,7 +107,7 @@ nomeInput.addEventListener("blur", () => {
     validaTelaDeSignup();
 })
 
-sobrenomeInput.addEventListener("blur", () => {
+sobrenomeInput.addEventListener("input", () => {
     if (sobrenomeInput.value != "") {
 
         sobrenomeValidacao.innerText = ""
@@ -125,7 +125,7 @@ sobrenomeInput.addEventListener("blur", () => {
     validaTelaDeSignup();
 })
 
-emailInput.addEventListener("blur", () => {
+emailInput.addEventListener("input", () => {
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(emailInput.value)) {
 
         emailValidacao.innerText = ""
@@ -143,7 +143,7 @@ emailInput.addEventListener("blur", () => {
     validaTelaDeSignup();
 })
 
-senhaInput.addEventListener("blur", () => {
+senhaInput.addEventListener("input", () => {
     if (/[0-9a-zA-Z$*&@#]{8,}/.test(senhaInput.value)) {
 
         senhaValidacao.innerText = ""
@@ -163,7 +163,7 @@ senhaInput.addEventListener("blur", () => {
 })
 
 
-repeteSenha.addEventListener("blur", () => {
+repeteSenha.addEventListener("input", () => {
 
     if (repeteSenha.value == senhaInput.value) {
 
