@@ -89,7 +89,7 @@ botaoSignup.addEventListener('click', function (evento) {
 
 });
 
-nomeInput.addEventListener("input", () => {
+function validaNome() {
     if (nomeInput.value != "") {
 
         nomeValidacao.innerText = ""
@@ -105,6 +105,14 @@ nomeInput.addEventListener("input", () => {
         nomeEValido = false;
     }
     validaTelaDeSignup();
+}
+
+nomeInput.addEventListener("input", () => {
+    validaNome();
+})
+
+nomeInput.addEventListener("blur", () => {
+    validaNome();
 })
 
 sobrenomeInput.addEventListener("input", () => {
@@ -124,6 +132,8 @@ sobrenomeInput.addEventListener("input", () => {
     }
     validaTelaDeSignup();
 })
+
+
 
 emailInput.addEventListener("input", () => {
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(emailInput.value)) {
