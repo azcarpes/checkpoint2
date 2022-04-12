@@ -90,19 +90,15 @@ botaoSalvar.addEventListener('click', function (evento) {
 
 });
 
-//Ao clicar e interagir com o campo de "email" no formulário
-campoEmailLogin.addEventListener('input', function () {
-    //Capturando o elemento <Small> do html
+function validaEmailLogin() {
     let emailValidacao = document.getElementById('emailValidacao');
 
-    if (campoEmailLogin.value != "") {
-        //Email tem informação
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(campoEmailLogin.value)) {
         emailValidacao.innerText = ""
         campoEmailLogin.style.border = ``
         emailEValido = true;
     } else {
-        //Email está vazio
-        emailValidacao.innerText = "Campo obrigatório"
+        emailValidacao.innerText = "E-mail inválido"
         emailValidacao.style.color = "#E01E1E"
         emailValidacao.style.fontSize = "8"
         emailValidacao.style.fontWeight = "bold"
@@ -110,10 +106,19 @@ campoEmailLogin.addEventListener('input', function () {
         emailEValido = false;
     }
     validaTelaDeLogin();
+}
+
+
+campoEmailLogin.addEventListener('input', function () {
+    validaEmailLogin();
 });
 
-campoSenhaLogin.addEventListener('input', function () {
+campoEmailLogin.addEventListener('blur', function () {
+    validaEmailLogin();
+});
 
+
+function validaSenhaLogin() {
     let senhaValidacao = document.getElementById('senhaValidacao');
 
     if (campoSenhaLogin.value != "") {
@@ -130,7 +135,16 @@ campoSenhaLogin.addEventListener('input', function () {
         senhaEValida = false;
     }
     validaTelaDeLogin();
+}
+
+campoSenhaLogin.addEventListener('input', function () {
+    validaSenhaLogin();
 });
+
+campoSenhaLogin.addEventListener('blur', function () {
+    validaSenhaLogin();
+});
+
 
 function validaTelaDeLogin() {
     if (emailEValido && senhaEValida) {

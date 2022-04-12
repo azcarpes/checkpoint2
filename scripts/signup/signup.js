@@ -115,7 +115,8 @@ nomeInput.addEventListener("blur", () => {
     validaNome();
 })
 
-sobrenomeInput.addEventListener("input", () => {
+
+function validaSobrenome() {
     if (sobrenomeInput.value != "") {
 
         sobrenomeValidacao.innerText = ""
@@ -131,11 +132,18 @@ sobrenomeInput.addEventListener("input", () => {
         sobrenomeEValido = false;
     }
     validaTelaDeSignup();
+}
+
+sobrenomeInput.addEventListener("input", () => {
+    validaSobrenome();
+})
+
+sobrenomeInput.addEventListener("blur", () => {
+    validaSobrenome();
 })
 
 
-
-emailInput.addEventListener("input", () => {
+function validaEmail() {
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(emailInput.value)) {
 
         emailValidacao.innerText = ""
@@ -143,7 +151,7 @@ emailInput.addEventListener("input", () => {
         emailEValido = true;
     } else {
 
-        emailValidacao.innerText = "Campo obrigatório"
+        emailValidacao.innerText = "E-mail inválido"
         emailValidacao.style.color = "#E01E1E"
         emailValidacao.style.fontSize = "8"
         emailValidacao.style.fontWeight = "bold"
@@ -151,9 +159,18 @@ emailInput.addEventListener("input", () => {
         emailEValido = false;
     }
     validaTelaDeSignup();
+}
+
+
+emailInput.addEventListener("input", () => {
+    validaEmail();
 })
 
-senhaInput.addEventListener("input", () => {
+emailInput.addEventListener("blur", () => {
+    validaEmail();
+})
+
+function validaSenha() {
     if (/[0-9a-zA-Z$*&@#]{8,}/.test(senhaInput.value)) {
 
         senhaValidacao.innerText = ""
@@ -170,11 +187,17 @@ senhaInput.addEventListener("input", () => {
 
         validaTelaDeSignup();
     }
+}
+
+senhaInput.addEventListener("input", () => {
+    validaSenha();
 })
 
+senhaInput.addEventListener("blur", () => {
+    validaSenha();
+})
 
-repeteSenha.addEventListener("input", () => {
-
+function validaRepeteSenha() {
     if (repeteSenha.value == senhaInput.value) {
 
         repeteSenhaValidacao.innerText = ""
@@ -190,6 +213,14 @@ repeteSenha.addEventListener("input", () => {
         repeteSenhaEValida = false;
     }
     validaTelaDeSignup();
+}
+
+repeteSenha.addEventListener("input", () => {
+    validaRepeteSenha();
+})
+
+repeteSenha.addEventListener("blur", () => {
+    validaRepeteSenha();
 })
 
 
