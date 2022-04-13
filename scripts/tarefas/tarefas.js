@@ -82,7 +82,7 @@ function criarTarefas() {
             "authorization": tokenJwt,
         },
         body: {
-            "description": novaTarefa.innerText,
+            "description": novaTarefa.value,
             "completed": false
         },
     }
@@ -100,6 +100,8 @@ function criarTarefas() {
         );
 
 }
+
+let botaoAddTarefa = document.getElementById("botaoAddTarefa");
 
 botaoAddTarefa.addEventListener("click", () => {
     criarTarefas();
