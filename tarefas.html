@@ -44,9 +44,12 @@
   <form class="nova-tarefa">
     <div class="not-done "></div>
     <input id="novaTarefa" type="text" placeholder="Nova tarefa">
+    <input value="Pendente" name="radioGrupo" type="radio" checked>Pendente
+    <input value="Completa" name="radioGrupo" type="radio">Completa
     <button id="botaoAddTarefa" type="submit">
       <img src="./assets/plus.png" alt="Adicionar uma nova tarefa">
     </button>
+
   </form>
 
 
@@ -83,6 +86,8 @@
   </ul>
 
   <script src="/ToDo-App/scripts/tarefas/tarefas.js"></script>
+  <script src="/ToDo-App/scripts/tarefas/tarefasPendentes.js"></script>
+  <script src="/ToDo-App/scripts/tarefas/tarefasTerminadas.js"></script>
 </body>
 
 </html>
