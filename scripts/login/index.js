@@ -50,6 +50,8 @@ botaoSalvar.addEventListener('click', function (evento) {
             body: usuarioObjetoJson
         }
 
+        exibirSpinner();
+
         fetch(urlEndPointLogin, configuracaoRequisicao)
             .then(resultado => {
                 if (resultado.status == 201) {
@@ -57,7 +59,9 @@ botaoSalvar.addEventListener('click', function (evento) {
                 }
                 throw resultado;
             }).then(resultado => {
-                loginSucesso(resultado.jwt);
+                setTimeout(() => {
+                    loginSucesso(resultado.jwt);
+                }, 2500);
             }
             ).catch(
                 erro => {
@@ -66,12 +70,14 @@ botaoSalvar.addEventListener('click', function (evento) {
             );
 
         function loginSucesso(jwtRecebido) {
-            console.log(jwtRecebido);
-            alert("Usuário logado com sucesso")
-
             sessionStorage.setItem("jwt", jwtRecebido);
 
-            window.location.href = "tarefas.html"
+            ocultarSpinner();
+
+            alert("Usuário logado com sucesso");
+
+            window.location.href = "tarefas.html";
+
         }
 
         function loginErro(statusRecebido) {
