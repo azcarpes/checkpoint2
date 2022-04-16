@@ -1,5 +1,6 @@
 let tarefasTerminadas = document.querySelector(".tarefas-terminadas");
 
+
 function mostraTarefasTerminadas(tarefa) {
     let liTarefas = document.createElement("li");
     liTarefas.classList.add("tarefa");
