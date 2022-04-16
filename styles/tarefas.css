@@ -238,6 +238,17 @@ a {
 #skeleton {
   animation: trasparencia 1s infinite;
 }
+
+#lixeira {
+  height: 1em;
+  width: 1em;
+  background-color: transparent;
+  margin-left: 1em;
+  margin-right: 1em;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
 @keyframes trasparencia {
   0% {
     opacity: 0.5;
