@@ -3,6 +3,7 @@ function alterarStatus(idTarefa, descricao, status) {
 
     let urlEndPointAlterarStatus = `https://ctd-todo-api.herokuapp.com/v1/tasks/${idTarefa}`
 
+    // a constante do obj tem que ser negada pra poder alterar realmente alterar o status da tarefa, nao somente mudá-la de lugar.
     const obj = {
         description: descricao,
         completed: !status

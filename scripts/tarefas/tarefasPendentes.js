@@ -15,5 +15,7 @@ function mostraTarefasPendentes(tarefa) {
          <img id="lixeira" src="/ToDo-App/assets/bin.png" onclick="deletarTarefa(${tarefa.id}, ${tarefa.completed})">
          <img id="completar" src="/ToDo-App/assets/completar.png" onclick="alterarStatus(${tarefa.id}, '${tarefa.description}', ${tarefa.completed})" onclick="mostraTarefasTerminadas()">
     `
+    //como a tarefa.description é uma string, ela teve que ser concatenada com o resto com aspas sinmples
+
     tarefasPendentes.appendChild(liTarefasPendentes)
 }
