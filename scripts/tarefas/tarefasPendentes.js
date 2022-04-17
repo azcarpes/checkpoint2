@@ -13,11 +13,7 @@ function mostraTarefasPendentes(tarefa) {
             <p class="timestamp"><i class="far fa-calendar-alt"></i>${tarefa.createdAt}</p>
          </div>
          <img id="lixeira" src="/ToDo-App/assets/bin.png" onclick="deletarTarefa(${tarefa.id}, ${tarefa.completed})">
+         <img id="completar" src="/ToDo-App/assets/completar.png" onclick="alterarStatus(${tarefa.id}, '${tarefa.description}', ${tarefa.completed})" onclick="mostraTarefasTerminadas()">
     `
     tarefasPendentes.appendChild(liTarefasPendentes)
-}
-
-function capturaIdTarefa(idTarefa) {
-
-    console.log(idTarefa);
 }
