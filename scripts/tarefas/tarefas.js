@@ -157,3 +157,4 @@ botaoAddTarefa.addEventListener("click", (evento) => {
     }
 
 });
+

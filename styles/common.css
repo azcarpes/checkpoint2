@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap");
 
 :root {
-  --primary: #6c54a0;
-  --secondary: #8e64c5;
+  --primary: #433563; /* Alteração: Roberto */
+  --secondary: #060933; /* Alteração: Roberto */
   --app-grey: #f2f2f2;
+  --app-cta: #d7790c; /* Alteração: Roberto */
 }
 
 * {
