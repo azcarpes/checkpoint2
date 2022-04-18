@@ -14,9 +14,12 @@ function mostraTarefasPendentes(tarefa) {
          </div>
         <div id="completar">
             <img src="/ToDo-App/assets/completar.png" onclick="alterarStatus(${tarefa.id}, '${tarefa.description}', ${tarefa.completed})" onclick="mostraTarefasTerminadas()">
-            <div id="comentario">Completar tarefa</div>
+            <div id="comentarioTerminar">Terminar tarefa</div>
         </div>
-        <img id="lixeira" src="/ToDo-App/assets/bin.png" onclick="deletarTarefa(${tarefa.id}, ${tarefa.completed})">
+        <div id="lixeira">
+            <img src="/ToDo-App/assets/bin.png" onclick="deletarTarefa(${tarefa.id}, ${tarefa.completed})">
+            <div id="comentarioLixoPendente">Apagar tarefa</div>
+        </div>
                   
     `
     //como a tarefa.description é uma string, ela teve que ser concatenada com o resto com aspas sinmples
