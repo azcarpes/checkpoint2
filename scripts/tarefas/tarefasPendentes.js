@@ -16,9 +16,9 @@ function mostraTarefasPendentes(tarefa) {
             <img src="/ToDo-App/assets/completar.png" onclick="alterarStatus(${tarefa.id}, '${tarefa.description}', ${tarefa.completed})" onclick="mostraTarefasTerminadas()">
             <div id="comentarioTerminar">Terminar tarefa</div>
         </div>
-        <div id="lixeira">
+        <div class="lixeira">
             <img src="/ToDo-App/assets/bin.png" onclick="deletarTarefa(${tarefa.id}, ${tarefa.completed})">
-            <div id="comentarioLixoPendente">Apagar tarefa</div>
+            <div class="comentarioApagarTarefa">Apagar tarefa</div>
         </div>
                   
     `

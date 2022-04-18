@@ -13,9 +13,14 @@ function mostraTarefasTerminadas(tarefa) {
             <p class="nome">${tarefa.description}</p>
             <p class="timestamp"><i class="far fa-calendar-alt"></i>${tarefa.createdAt}</p>
         </div>
-        <img id="enviarPendente" src="/ToDo-App/assets/reload.png" onclick="alterarStatus(${tarefa.id}, '${tarefa.description}', ${tarefa.completed})" onclick="mostraTarefasPendentes()">
-        <img id="lixeira" src="/ToDo-App/assets/bin.png" onclick="deletarTarefa(${tarefa.id}, ${tarefa.completed})">
-      
+        <div id="enviarPendente">
+            <img src="/ToDo-App/assets/reload.png" onclick="alterarStatus(${tarefa.id}, '${tarefa.description}', ${tarefa.completed})" onclick="mostraTarefasPendentes()">
+            <div id="comentarioMarcarComoPendente">Mover para tarefas pendentes</div>
+        </div>   
+        <div class="lixeira">
+            <img src="/ToDo-App/assets/bin.png" onclick="deletarTarefa(${tarefa.id}, ${tarefa.completed})">
+            <div class="comentarioApagarTarefa">Apagar tarefa</div>
+        </div>      
     `
     tarefasTerminadas.appendChild(liTarefas)
 }
