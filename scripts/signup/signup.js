@@ -3,6 +3,8 @@ let sobrenomeInput = document.getElementById("sobrenome");
 let emailInput = document.getElementById("email");
 let senhaInput = document.getElementById("senha");
 let repeteSenha = document.getElementById("repeteSenha");
+let checkTermos = document.getElementById("checkbox");
+
 
 //pegando a URL inserida pelo usuario e guardando na localStorage:
 let avatar = document.getElementById("avatar");
@@ -14,12 +16,14 @@ let emailValidacao = document.getElementById("emailValidacao");
 let senhaValidacao = document.getElementById("senhaValidacao");
 let repeteSenhaValidacao = document.getElementById("repeteSenhaValidacao");
 let botaoSignup = document.getElementById("botaoSignup");
+let termosValidacao = document.getElementById("termosValidacao");
 
 let nomeEValido = false;
 let sobrenomeEValido = false;
 let emailEValido = false;
 let senhaEValida = false;
 let repeteSenhaEValida = false;
+let checkEValido = false;
 
 let nomeSignupNormalizado;
 let sobrenomeSignupNormalizado;
@@ -236,9 +240,32 @@ repeteSenha.addEventListener("blur", () => {
     validaRepeteSenha();
 })
 
+function validaLieConcordo() {
+
+    if (checkTermos.checked) {
+        termosValidacao.innerText = ""
+        checkEValido = true;
+    }
+    else {
+        termosValidacao.innerText = "É necessário ler e concordar com os termos"
+        termosValidacao.style.color = "#E01E1E"
+        termosValidacao.style.fontSize = "7"
+        termosValidacao.style.fontWeight = "bold"
+        checkEValido = false;
+    }
+    validaTelaDeSignup();
+}
+
+checkTermos.addEventListener("input", () => {
+    validaLieConcordo();
+})
+
+checkTermos.addEventListener("blur", () => {
+    validaLieConcordo();
+})
 
 function validaTelaDeSignup() {
-    if (nomeEValido && sobrenomeEValido && emailEValido && senhaEValida && repeteSenhaEValida) {
+    if (nomeEValido && sobrenomeEValido && emailEValido && senhaEValida && repeteSenhaEValida && checkEValido) {
         botaoSignup.removeAttribute('disabled')
         botaoSignup.innerText = "Criar conta"
         return true
@@ -248,3 +275,5 @@ function validaTelaDeSignup() {
         return false
     }
 }
+
+

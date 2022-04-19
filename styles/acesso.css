@@ -99,3 +99,17 @@ button:hover {
   align-items: center;
   justify-content: center;
 }
+
+#termos {
+  display: flex;
+  margin-top: 1em;
+}
+
+#termos label {
+  margin: 0;
+}
+
+#termos #checkbox {
+  width: fit-content;
+  margin-right: 15px;
+}
