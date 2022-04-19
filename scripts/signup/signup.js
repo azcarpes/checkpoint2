@@ -4,6 +4,10 @@ let emailInput = document.getElementById("email");
 let senhaInput = document.getElementById("senha");
 let repeteSenha = document.getElementById("repeteSenha");
 
+//pegando a URL inserida pelo usuario e guardando na localStorage:
+let avatar = document.getElementById("avatar");
+localStorage.setItem("avatar", avatar.value);
+
 let nomeValidacao = document.getElementById("nomeValidacao");
 let sobrenomeValidacao = document.getElementById("sobrenomeValidacao");
 let emailValidacao = document.getElementById("emailValidacao");

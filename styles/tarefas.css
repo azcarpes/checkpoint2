@@ -38,8 +38,16 @@ a {
   width: 2em;
   border-radius: 50%;
   background-color: white;
-  opacity: 0.4;
+  opacity: 1;
   margin-left: 0.7em;
+}
+
+/* css da imagem do avatar: */
+.user-image img {
+  height: 2em;
+  width: 2em;
+  background-color: white;
+  border-radius: 50%;
 }
 
 #closeApp {

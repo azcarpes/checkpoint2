@@ -1,5 +1,7 @@
+//pegando o token salvo na sessionStorage:
 let tokenJwt = sessionStorage.getItem("jwt");
 
+//no load da pag, caso o token nao seja encontrado, exibe um alerta e redireciona a pag de login:
 onload = function () {
 
     if (!tokenJwt) {
@@ -9,8 +11,10 @@ onload = function () {
         console.log(tokenJwt);
     }
 
+    //ainda no load da pag, sao chamadas as funcoes abaixo para rebderizar na tela o nome do usuario, as tarefas que ele já tem criadas ou o skeleton e a foto do avatar:
     usuarioLogado();
-    mostrarTarefas()
+    mostrarTarefas();
+    avatar();
 }
 
 function usuarioLogado() {
