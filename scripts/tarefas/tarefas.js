@@ -51,7 +51,7 @@ function usuarioLogado() {
 
 }
 
-
+//essa funcao faz um get na api e pega as tarefas já criadas pelo usuario, usando a funcao manipula tarefas, podemos escolher pra qual canto da lista ela vai, se pras completas ou pras pendentes:
 function mostrarTarefas() {
     let urlEndPointTasks = "https://ctd-todo-api.herokuapp.com/v1/tasks"
 
@@ -156,6 +156,9 @@ botaoAddTarefa.addEventListener("click", (evento) => {
                     console.log(erro);
                 }
             );
+
+        //para excluir o nome da tarefa recém inserida e deixar no input apenas o placeholder para o usuário ver:    
+        novaTarefa.value = "";
 
     } else {
         evento.preventDefault();
