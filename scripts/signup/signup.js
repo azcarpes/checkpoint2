@@ -34,6 +34,7 @@ botaoSignup.addEventListener('click', function (evento) {
 
     evento.preventDefault();
 
+
     if (validaTelaDeSignup()) {
 
         nomeSignupNormalizado = retiraEspacosDeUmValorInformado(nomeInput.value);
@@ -59,6 +60,8 @@ botaoSignup.addEventListener('click', function (evento) {
             body: usuarioSignupJson
         }
 
+        exibirSpinner();
+
         fetch(urlEndPointSignup, configuracaoRequisicao)
             .then(resultado => {
                 if (resultado.status == 201) {
@@ -66,7 +69,10 @@ botaoSignup.addEventListener('click', function (evento) {
                 }
                 throw resultado;
             }).then(resultado => {
-                signupSucesso(resultado.jwt);
+                setTimeout(() => {
+                    signupSucesso(resultado.jwt);
+                }, 2500);
+
             }
             ).catch(
                 erro => {
@@ -74,9 +80,12 @@ botaoSignup.addEventListener('click', function (evento) {
                 }
             );
 
+
         function signupSucesso(jwtRecebido) {
             console.log(jwtRecebido);
-            alert("Usuário criado com sucesso")
+            ocultarSpinner();
+            alert("Usuário criado com sucesso");
+            window.location.href = "index.html";
         }
 
 

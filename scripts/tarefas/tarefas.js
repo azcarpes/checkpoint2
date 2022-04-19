@@ -47,6 +47,7 @@ function usuarioLogado() {
 
 }
 
+
 function mostrarTarefas() {
     let urlEndPointTasks = "https://ctd-todo-api.herokuapp.com/v1/tasks"
 
@@ -65,7 +66,7 @@ function mostrarTarefas() {
             if (resultado.length > 0) {
                 // Se existem tarefas cadastradas, esconde o skeleton após carregá-las
                 let skeleton = document.getElementById("skeleton");
-                skeleton.setAttribute('hidden', true)
+                skeleton.setAttribute('hidden', true);
             }
             manipulaTarefas(resultado);
         })
@@ -138,6 +139,7 @@ botaoAddTarefa.addEventListener("click", (evento) => {
 
             })
             .then(resultado => {
+
                 if (radioSelecionadoCompleta) {
                     mostraTarefasTerminadas(resultado);
                 } else {
