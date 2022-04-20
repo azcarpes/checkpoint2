@@ -5,11 +5,6 @@ let senhaInput = document.getElementById("senha");
 let repeteSenha = document.getElementById("repeteSenha");
 let checkTermos = document.getElementById("checkbox");
 
-
-//pegando a URL inserida pelo usuario e guardando na localStorage:
-let avatar = document.getElementById("avatar");
-localStorage.setItem("avatar", avatar.value);
-
 let nomeValidacao = document.getElementById("nomeValidacao");
 let sobrenomeValidacao = document.getElementById("sobrenomeValidacao");
 let emailValidacao = document.getElementById("emailValidacao");
@@ -45,6 +40,9 @@ botaoSignup.addEventListener('click', function (evento) {
 
     if (validaTelaDeSignup()) {
 
+        //capturo o elemento onde será salvo o link do avatar na local storage:
+        let avatar = document.getElementById("avatar");
+
         nomeSignupNormalizado = retiraEspacosDeUmValorInformado(nomeInput.value);
         sobrenomeSignupNormalizado = retiraEspacosDeUmValorInformado(sobrenomeInput.value);
         emailSignupNormalizado = retiraEspacosDeUmValorInformado(emailInput.value);
@@ -68,6 +66,7 @@ botaoSignup.addEventListener('click', function (evento) {
             body: usuarioSignupJson
         }
 
+
         exibirSpinner();
 
         fetch(urlEndPointSignup, configuracaoRequisicao)
@@ -77,6 +76,9 @@ botaoSignup.addEventListener('click', function (evento) {
                 }
                 throw resultado;
             }).then(resultado => {
+                //salvo o link do avatar aqui dentro do fetch pq é o lugar onde o signup deu certo:
+                localStorage.setItem("avatar", avatar.value);
+                //settimeout pra mostrar o spinner:
                 setTimeout(() => {
                     signupSucesso(resultado.jwt);
                 }, 2500);
